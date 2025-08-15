@@ -6,10 +6,14 @@ internal class Program
 {
     private static void Main(string[] args)
     {
-        PosicaoXadrez px = new PosicaoXadrez('a', 1);
-        Console.WriteLine(px);
+        Tabuleiro tab = new Tabuleiro(8, 8);
 
-        Console.WriteLine(px.convertePosicao());
+        tab.colocarPeca(new Torre(Cor.Vermelha, tab), new Posicao(0, 0));
+        tab.colocarPeca(new Torre(Cor.Vermelha, tab), new Posicao(1, 2));
+        tab.colocarPeca(new Rei(Cor.Azul, tab), new Posicao(2, 4));
+        tab.colocarPeca(new Rei(Cor.Azul, tab), new Posicao(3, 6));
+
+        Tela.imprimirTabuleiro(tab);
 
     }
 }
