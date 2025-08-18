@@ -9,23 +9,34 @@ internal class Program
             PartidaXadrez partidaXadrez = new PartidaXadrez();
 
             while (!partidaXadrez.terminado) {
-                Console.Clear();
-                Tela.imprimirTabuleiro(partidaXadrez.tab);
-                Console.WriteLine();
 
-                Console.Write("Origem: ");
-                Posicao origem = Tela.lePosicaoXadrez().convertePosicao();
+                try { 
+                    Console.Clear();
+                    Tela.imprimirTabuleiro(partidaXadrez.tab);
+                    Console.WriteLine();
+                    Console.WriteLine("Turno: " + partidaXadrez.Turno );
+                    Console.WriteLine("Aguardando jogada: " + partidaXadrez.jogadorAtual);
 
-                bool[,] posicoesPossiveis = partidaXadrez.tab.peca(origem).movimentosPossiveis();
+                    Console.Write("Origem: ");
+                    Posicao origem = Tela.lePosicaoXadrez().convertePosicao();
+                    partidaXadrez.validarPosicaoDeOrigem(origem);
 
-                Console.Clear();
-                Tela.imprimirTabuleiro(partidaXadrez.tab, posicoesPossiveis);
+                    bool[,] posicoesPossiveis = partidaXadrez.tab.peca(origem).movimentosPossiveis();
 
-                
-                Console.Write("Destino: ");
-                Posicao destino = Tela.lePosicaoXadrez().convertePosicao();
+                    Console.Clear();
+                    Tela.imprimirTabuleiro(partidaXadrez.tab, posicoesPossiveis);
 
-                partidaXadrez.executaMovimento(origem, destino);
+                    Console.WriteLine();
+                    Console.Write("Destino: ");
+                    Posicao destino = Tela.lePosicaoXadrez().convertePosicao();
+                    partidaXadrez.validarPosicaoDeDestino(origem, destino);
+
+                    partidaXadrez.realizaJogada(origem, destino);
+                }
+                catch(Exception ex){ 
+                    Console.WriteLine(ex.Message);
+                    Console.ReadLine();
+                }
             }
         }
         catch (Exception ex) {
