@@ -24,7 +24,7 @@ namespace xadrez_console {
             for (int i = 0; i < tab.Linhas; i++) {
                 Console.Write(8 - i + " ");
                 for (int j = 0; j < tab.Colunas; j++) {
-                    if(posicoesPossiveis[i,j])
+                    if (posicoesPossiveis[i, j])
                         Console.BackgroundColor = fundoAlterado;
                     else
                         Console.BackgroundColor = fundoOriginal;
@@ -65,6 +65,39 @@ namespace xadrez_console {
                 }
                 Console.Write(" ");
             }
+        }
+
+        public static void imprimirPartida(PartidaXadrez partida) {
+            imprimirTabuleiro(partida.tab);
+            Console.WriteLine();
+            imprimirPecasCapturadas(partida);
+            Console.WriteLine();
+            Console.WriteLine("Turno: " + partida.Turno);
+            Console.WriteLine("Aguardando jogada: " + partida.jogadorAtual);
+        }
+
+        public static void imprimirPecasCapturadas(PartidaXadrez partida) {
+            Console.WriteLine("Peças capturadas: ");
+            Console.Write("Azul: ");
+            ConsoleColor aux = Console.ForegroundColor;
+            Console.ForegroundColor = ConsoleColor.Blue;
+            imprimirConjunto(partida.pecasCapturadas(Cor.Azul));
+            Console.ForegroundColor= aux;
+            Console.WriteLine();
+
+            Console.Write("Vermelha: ");
+            Console.ForegroundColor = ConsoleColor.Red;
+            imprimirConjunto(partida.pecasCapturadas(Cor.Vermelha));
+            Console.ForegroundColor= aux;
+            Console.WriteLine();
+        }
+
+        public static void imprimirConjunto(HashSet<Peca> pecas) {
+            Console.Write("[");
+            foreach (Peca x in pecas) {
+                Console.Write(x + " ");
+            }
+            Console.Write("]");
         }
     }
 }

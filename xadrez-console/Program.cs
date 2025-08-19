@@ -12,10 +12,7 @@ internal class Program
 
                 try { 
                     Console.Clear();
-                    Tela.imprimirTabuleiro(partidaXadrez.tab);
-                    Console.WriteLine();
-                    Console.WriteLine("Turno: " + partidaXadrez.Turno );
-                    Console.WriteLine("Aguardando jogada: " + partidaXadrez.jogadorAtual);
+                    Tela.imprimirPartida(partidaXadrez);
 
                     Console.Write("Origem: ");
                     Posicao origem = Tela.lePosicaoXadrez().convertePosicao();
