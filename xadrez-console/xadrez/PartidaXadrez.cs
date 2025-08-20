@@ -46,9 +46,13 @@ namespace xadrez {
                 xeque = true;
             else
                 xeque = false;
-                
-            Turno++;
-            mudaJogador();
+
+            if (testeXequeMate(adversaria(jogadorAtual)))
+                terminado = true;
+            else {
+                Turno++;
+                mudaJogador();
+            }
         }
 
         public void desfazMovimento(Posicao origem, Posicao destino, Peca pecaCapturada) {
@@ -132,6 +136,30 @@ namespace xadrez {
                     return true;
             }
             return false;
+        }
+
+        public bool testeXequeMate(Cor cor) {
+            foreach (var x in pecasEmJogo(cor)) {
+                bool[,] mat = x.movimentosPossiveis();
+                for (int i = 0; i < tab.Linhas; i++) {
+                    for (int j = 0; j < tab.Colunas; j++) {
+                        //pra cada peça em jogo, eu percorro sua matriz de movimentos possiveis
+                        if (mat[i, j]) {
+                            Posicao origem = x.Posicao;
+                            Posicao destino = new Posicao(i, j);
+                            Peca capturada = executaMovimento(origem, destino);                            
+                            bool xeque = estaEmXeque(cor);
+                            desfazMovimento(origem, destino, capturada);
+                            //pego essa peça, simulo um movimento e verifico se com esse movimento simulado o rei continua em xeque.
+                            //se o rei não estiver em xeque, existe movimentos possiveis para tirar o rei do xeque: não é xeque-mate
+                            if (!xeque)
+                                return false;
+                        }
+                    }
+                }
+            }
+            //se nenhuma peça tirar o rei do xeque, é xeque-mate
+            return true;
         }
 
         public void colocarNovaPeca(char coluna, int linha, Peca peca) {

@@ -35,6 +35,8 @@ internal class Program
                     Console.ReadLine();
                 }
             }
+            Console.Clear();
+            Tela.imprimirPartida(partidaXadrez);
         }
         catch (Exception ex) {
             Console.WriteLine(ex.Message);
