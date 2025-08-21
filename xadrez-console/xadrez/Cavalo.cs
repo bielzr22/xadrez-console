@@ -18,35 +18,35 @@ namespace xadrez_console.xadrez {
 
             pos.defineValor(this.Posicao.Linha - 2, this.Posicao.Coluna + 1);
             if(Tabuleiro.posicaoValida(pos) && podeMover(pos))
-                mat[Posicao.Linha, Posicao.Coluna] = true;
+                mat[pos.Linha, pos.Coluna] = true;
 
             pos.defineValor(this.Posicao.Linha - 1, this.Posicao.Coluna + 2);
             if(Tabuleiro.posicaoValida(pos) && podeMover(pos))
-                mat[Posicao.Linha, Posicao.Coluna] = true;
+                mat[pos.Linha, pos.Coluna] = true;
 
             pos.defineValor(this.Posicao.Linha + 1, this.Posicao.Coluna + 2);
             if(Tabuleiro.posicaoValida(pos) && podeMover(pos))
-                mat[Posicao.Linha, Posicao.Coluna] = true;
+                mat[pos.Linha, pos.Coluna] = true;
 
             pos.defineValor(this.Posicao.Linha + 2, this.Posicao.Coluna + 1);
             if(Tabuleiro.posicaoValida(pos) && podeMover(pos))
-                mat[Posicao.Linha, Posicao.Coluna] = true;
+                mat[pos.Linha, pos.Coluna] = true;
 
             pos.defineValor(this.Posicao.Linha + 2, this.Posicao.Coluna - 1);
             if(Tabuleiro.posicaoValida(pos) && podeMover(pos))
-                mat[Posicao.Linha, Posicao.Coluna] = true;
+                mat[pos.Linha, pos.Coluna] = true;
 
             pos.defineValor(this.Posicao.Linha + 1, this.Posicao.Coluna - 2);
             if(Tabuleiro.posicaoValida(pos) && podeMover(pos))
-                mat[Posicao.Linha, Posicao.Coluna] = true;
+                mat[pos.Linha, pos.Coluna] = true;
 
             pos.defineValor(this.Posicao.Linha - 1, this.Posicao.Coluna - 2);
             if(Tabuleiro.posicaoValida(pos) && podeMover(pos))
-                mat[Posicao.Linha, Posicao.Coluna] = true;
+                mat[pos.Linha, pos.Coluna] = true;
 
             pos.defineValor(this.Posicao.Linha - 2, this.Posicao.Coluna - 1);
             if(Tabuleiro.posicaoValida(pos) && podeMover(pos))
-                mat[Posicao.Linha, Posicao.Coluna] = true;
+                mat[pos.Linha, pos.Coluna] = true;
 
             return mat;
         }

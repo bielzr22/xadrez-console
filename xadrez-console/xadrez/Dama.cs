@@ -24,7 +24,7 @@ namespace xadrez_console.xadrez {
                 if (Tabuleiro.peca(pos) != null && Tabuleiro.peca(pos).Cor != this.Cor)
                     break;
             
-                pos.defineValor(this.Posicao.Linha - 1, this.Posicao.Coluna + 1);
+                pos.defineValor(pos.Linha - 1, pos.Coluna + 1);
             }
 
             //noroeste
@@ -35,7 +35,7 @@ namespace xadrez_console.xadrez {
                 if (Tabuleiro.peca(pos) != null && Tabuleiro.peca(pos).Cor != this.Cor) 
                     break;       
 
-                pos.defineValor(this.Posicao.Linha - 1, this.Posicao.Coluna - 1);
+                pos.defineValor(pos.Linha - 1, pos.Coluna - 1);
             }
 
             //sudeste
@@ -46,7 +46,7 @@ namespace xadrez_console.xadrez {
                 if (Tabuleiro.peca(pos) != null && Tabuleiro.peca(pos).Cor != this.Cor) 
                     break;
                 
-                pos.defineValor(this.Posicao.Linha + 1, this.Posicao.Coluna + 1);
+                pos.defineValor(pos.Linha + 1, pos.Coluna + 1);
             }
 
             //sudoeste
@@ -57,7 +57,7 @@ namespace xadrez_console.xadrez {
                 if (Tabuleiro.peca(pos) != null && Tabuleiro.peca(pos).Cor != this.Cor)
                     break;
                 
-                pos.defineValor(this.Posicao.Linha + 1, this.Posicao.Coluna - 1);
+                pos.defineValor(pos.Linha + 1, pos.Coluna - 1);
             }
 
             //norte
